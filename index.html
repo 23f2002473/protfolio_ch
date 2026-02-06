@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rohit Portfolio</title>
+  <style>
+    .nav-link {
+      color: #cbd5e1;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #34d399;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #34d399;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: #34d399;
+    }
+
+    .mobile-link {
+      display: block;
+      color: #e5e7eb;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-link:hover {
+      color: #34d399;
+    }
+
+
+    .gif-background {
+      width: 100%;
+      /* full width */
+      height: 100%;
+      /* adjust height */
+      background: url('bgmario.gif') no-repeat center center;
+      /* center the image */
+      background-size: cover;
+      /* scale it nicely */
+    }
+
+    #cursor {
+      display: inline-block;
+      margin-left: 2px;
+      color: #34d399;
+      /* emerald-400 */
+      font-weight: 600;
+      text-shadow: 0 0 8px #34d399;
+      animation: cursorBlink 1s steps(1) infinite;
+    }
+
+    @keyframes cursorBlink {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .contact-card {
+      transition: all 0.3s ease;
+    }
+
+    @keyframes scan {
+      from {
+        background-position-y: 0;
+      }
+
+      to {
+        background-position-y: 100%;
+      }
+    }
+
+    .animate-scan {
+      animation: scan 6s linear infinite;
+    }
+
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(52, 211, 153, 0.8);
+      box-shadow:
+        0 0 0 1px rgba(52, 211, 153, 0.4),
+        0 0 25px rgba(52, 211, 153, 0.25);
+    }
+
+    .contact-card:hover .icon-wrap {
+      box-shadow: 0 0 18px rgba(52, 211, 153, 0.6);
+    }
+
+
+
+    @font-face {
+      font-family: 'pixel';
+      /* name you’ll use in CSS */
+      src: url('fonts/VT323-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .glow-cyan {
+      filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.7));
+    }
+
+    .glow-rose {
+      filter: drop-shadow(0 0 8px rgba(251, 113, 133, 0.7));
+    }
+
+    .glow-purple {
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.7));
+    }
+
+    .glow-emerald {
+      filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.7));
+    }
+
+    .icon-cyan {
+      color: #22d3ee;
+      filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.7));
+    }
+
+    .icon-purple {
+      color: #a855f7;
+      filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.7));
+    }
+
+    .icon-emerald {
+      color: #34d399;
+      filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.7));
+    }
+
+    .typing {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid currentColor;
+      /* uses your text color */
+      animation: typing 3s steps(20, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 15ch;
+      }
+
+      /* adjust ch to match your text length */
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp 0.9s ease-out forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+  </style>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- Optional: Customize Tailwind config inline -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bb: '#0d0f1a',
+            gg: '#34d399',
+          },
+          fontFamily: {
+            pixel: ['pixel', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+
+<body class=" flex-col relative" style="height: 100vh;">
+  <!-- <div class="w-full h-14 bg-bb absolute top-0 left-0">
+    </div> -->
+
+  <!-- navbar -->
+  <nav class="fixed top-0 left-0 w-full z-50">
+    <div class="relative backdrop-blur-xl bg-slate-900/70 border-b border-slate-700 pt-4 pb-4">
+
+
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between h-16">
+
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <!-- <div class="px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-400 font-bold text-sm">
+                RS
+              </div> -->
+
+            <div class="h-16 w-16 bg-cover bg-center rounded-full border border-emerald-400"
+              style="background-image: url('rohit.jpeg');"></div>
+
+            <span class="text-white text-2xl font-pixel font-semibold tracking-wide">
+              Rohit Sharma
+            </span>
+          </div>
+
+          <!-- Desktop Menu (ONLY lg+) -->
+          <div class="hidden lg:flex items-center gap-8 text-sm text-amber-200">
+            <a href="#home" class="nav-link text-amber-200">Home</a>
+            <a href="#about" class="nav-link text-amber-200">About</a>
+            <a href="#skills" class="nav-link text-amber-200">Skills</a>
+            <a href="#experience" class="nav-link text-amber-200">Experience</a>
+            <a href="#projects" class="nav-link text-amber-200">Projects</a>
+            <a href="#awards" class="nav-link text-amber-200">Awards</a>
+            <a href="#education" class="nav-link text-amber-200">Education</a>
+            <a href="#awards" class="nav-link text-amber-200">Awards</a>
+            <a href="#contact" class="nav-link text-amber-200">Contact</a>
+          </div>
+
+          <!-- CTA (ONLY lg+) -->
+          <div class="hidden lg:block">
+            <a href="#contact"
+              class="px-4 py-2 rounded-lg bg-emerald-500 text-black font-medium hover:bg-emerald-400 transition contact-card">
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Burger Button (md & below) -->
+          <button id="menuBtn" class="lg:hidden text-slate-200 focus:outline-none relative w-8 h-8">
+            <!-- Burger -->
+            <span id="burger" class="absolute inset-0 flex flex-col justify-center gap-1.5 transition-all">
+              <span class="h-0.5 w-6 bg-white"></span>
+              <span class="h-0.5 w-6 bg-white"></span>
+              <span class="h-0.5 w-6 bg-white"></span>
+            </span>
+
+            <!-- Cross -->
+            <span id="cross" class="absolute inset-0 hidden items-center justify-center">
+              <span class="absolute h-0.5 w-6 bg-white rotate-45"></span>
+              <span class="absolute h-0.5 w-6 bg-white -rotate-45"></span>
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Mobile / Tablet Menu -->
+      <div id="mobileMenu" class="lg:hidden absolute top-16 right-0 
+                    bg-slate-900/30 backdrop-blur-xl border-t border-slate-700
+                    opacity-0 -translate-y-4 pointer-events-none
+                    transition-all duration-300 ease-out rounded-bl-lg">
+
+        <div class="px-6 py-6 space-y-4 text-md font-medium justify-center items-center flex flex-col">
+          <a href="#home" class="mobile-link text-amber-200">Home</a>
+          <a href="#about" class="mobile-link text-amber-200">About</a>
+          <a href="#skills" class="mobile-link text-amber-200">Skills</a>
+          <a href="#experience" class="mobile-link text-amber-200">Experience</a>
+          <a href="#projects" class="mobile-link text-amber-200">Projects</a>
+          <a href="#awards" class="mobile-link text-amber-200">Awards</a>
+          <a href="#education" class="mobile-link text-amber-200">Education</a>
+          <a href="#contact" class="mobile-link text-amber-200">Contact</a>
+
+          <a href="#contact" class="block text-center mt-4 px-4 py-2 rounded-lg
+                      bg-emerald-500 text-black font-medium contact-card">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- intro -->
+  <div class="w-full" id="home">
+    <section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+
+      <!-- 🔮 Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('bgmario.gif');">
+      </div>
+
+      <!-- 🌑 Strong Dark + Vignette -->
+      <div class="absolute inset-0 bg-slate-900/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/80"></div>
+
+      <!-- ✨ CONTENT -->
+      <div class="relative z-10 text-center px-6 max-w-4xl">
+
+        <!-- Title -->
+        <h1 class="text-6xl md:text-8xl font-extrabold text-white tracking-tight animate-fade-up">
+          Hi, I’m
+          <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
+            Rohit
+          </span>
+        </h1>
+
+        <!-- Role -->
+        <p class="mt-4 text-3xl md:text-4xl text-amber-200 font-pixel">
+          <span id="typing-text"></span><span id="cursor">|</span>
+        </p>
+
+
+
+        <!-- Description -->
+        <p class="mt-6 text-amber-200 text-lg leading-relaxed animate-fade-up delay-2">
+          Crafting intelligent solutions with
+          <span class="text-cyan-400 font-medium">Computer Vision</span>,
+          <span class="text-purple-400 font-medium">NLP</span>, and
+          <span class="text-emerald-400 font-medium">Deep Learning</span>.
+          <br class="hidden sm:block">
+          Building the future, one model at a time.
+        </p>
+
+        <!-- Buttons -->
+        <div class="mt-10 flex justify-center gap-4 animate-fade-up delay-3">
+          <a href="#projects"
+            class="px-8 py-3 rounded-lg bg-emerald-400 text-black font-semibold hover:bg-emerald-300 transition">
+            View Projects
+          </a>
+
+          <a href="https://drive.google.com/drive/u/0/folders/18GW6WwY7aauSBSzdVWcgm8ERucxstd7e-jCPhm8ZOsoy9xJp-tnD1PnuZB-2FfBO-c2dIiPt"
+            target="_blank"
+            class="px-8 py-3 rounded-lg bg-teal-400 text-black font-semibold hover:bg-teal-300 transition">
+            Resume
+          </a>
+
+          <a href="#contact"
+            class="px-8 py-3 rounded-lg bg-purple-400  text-black font-semibold hover:bg-purple-300 transition ">
+            Contact Me
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- about me -->
+  <div class="w-full flex-col bg-bb" id="about">
+    <section class="relative w-full py-20 overflow-hidden">
+      <!-- 🔹 Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('bgman.gif');"></div>
+
+      <!-- HARD LEFT BLACK FADE -->
+      <div class="absolute inset-0 
+                    bg-gradient-to-r 
+                    from-slate-900 
+                    via-slate-900/95 
+                    via-slate-900/80 
+                    via-slate-900/60 
+                    to-transparent">
+      </div>
+
+      <!-- GLOBAL DARKENING (BOOST CONTRAST) -->
+      <div class="absolute inset-0 bg-slate-900/40"></div>
+
+      <!-- 🔹 Content -->
+      <div class="z-10 relative">
+        <h1 class="text-teal-400 font-bold text-6xl text-center pb-4 font-pixel">Crafting My Story</h1>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          <!-- LEFT: ABOUT TEXT -->
+          <div>
+            <p class="text-teal-400 font-semibold mb-2 text-lg">About Me</p>
+
+            <h2 class="text-4xl lg:text-5xl font-bold leading-tight text-white">
+              Passionate about
+              <span class="text-cyan-400">AI</span> &
+              <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Innovation
+              </span>
+            </h2>
+
+            <p class="mt-6 text-amber-200 leading-relaxed">
+              I'm <span class="text-white font-medium">Rohit Sharma</span>, a Machine Learning Engineer on a
+              mission to build intelligent systems that solve real-world problems.
+            </p>
+
+            <p class="mt-4 text-amber-200 leading-relaxed">
+              Currently pursuing my <span class="text-emerald-400 font-semibold">BTech in AI & ML</span> from JNGEC and
+              <span class="text-purple-400 font-semibold">BS in Data Science</span> from IIT Madras, I combine academic
+              rigor
+              with hands-on experience.
+            </p>
+
+            <p class="mt-4 text-amber-200 leading-relaxed">
+              With internships at <span class="text-cyan-400 font-semibold">IIT Mandi</span> and
+              <span class="text-cyan-400 font-semibold">Ingenx Technology</span>, I’ve built production-ready ML systems
+              and
+              contributed to research.
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-3 mt-6">
+              <span class="px-4 py-1 rounded-full bg-slate-800 text-teal-300 text-sm border border-teal-300">AI /
+                ML</span>
+              <span class="px-4 py-1 rounded-full bg-slate-800 text-teal-300 text-sm border border-teal-300">Computer
+                Vision</span>
+              <span class="px-4 py-1 rounded-full bg-slate-800 text-teal-300 text-sm border border-teal-300">NLP</span>
+              <span class="px-4 py-1 rounded-full bg-slate-800 text-teal-300 text-sm border border-teal-300">Deep
+                Learning</span>
+            </div>
+          </div>
+
+          <!-- RIGHT: SKILL POINTS -->
+          <div class="bg-slate-800/60 border border-slate-600 rounded-2xl p-6 backdrop-blur-lg contact-card">
+
+            <h3 class="text-emerald-400 font-semibold mb-6 tracking-widest font-pixel text-2xl">
+              SKILL POINTS
+            </h3>
+
+            <!-- Problem Solving -->
+            <div class="mb-6">
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-3 text-white">
+                  <svg class="w-5 h-5 text-cyan-400 glow-cyan" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.663 17h4.674M12 3a5 5 0 00-5 5c0 1.657.79 3.128 2 4v3h6v-3c1.21-.872 2-2.343 2-4a5 5 0 00-5-5z" />
+                  </svg>
+                  <span class="font-semibold">Problem Solving</span>
+                </div>
+                <span class="text-yellow-400 font-pixel text-xl">95%</span>
+              </div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[95%] bg-gradient-to-r from-emerald-400 to-purple-500"></div>
+              </div>
+            </div>
+
+            <!-- Machine Learning -->
+            <div class="mb-6">
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-3 text-white">
+                  <svg class="w-5 h-5 text-purple-400 glow-purple" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 3h6v6H9zM4 9h6v6H4zM14 9h6v6h-6zM9 15h6v6H9z" />
+                  </svg>
+                  <span class="font-semibold">Machine Learning</span>
+                </div>
+                <span class="text-yellow-400 font-pixel text-xl">92%</span>
+              </div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[92%] bg-gradient-to-r from-emerald-400 to-purple-500"></div>
+              </div>
+            </div>
+
+            <!-- Computer Vision -->
+            <div class="mb-6">
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-3 text-white">
+                  <svg class="w-5 h-5 text-emerald-400 glow-emerald" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M1.5 12s4.5-7.5 10.5-7.5S22.5 12 22.5 12 18 19.5 12 19.5 1.5 12 1.5 12z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <span class="font-semibold">Computer Vision</span>
+                </div>
+                <span class="text-yellow-400 font-pixel text-xl">90%</span>
+              </div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[90%] bg-gradient-to-r from-emerald-400 to-purple-500"></div>
+              </div>
+            </div>
+
+            <!-- Data analysis -->
+            <div class="mb-6">
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-3 text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-400 glow-rose" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <ellipse cx="12" cy="5" rx="9" ry="3" />
+                    <path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5" />
+                  </svg>
+                  <span class="font-semibold">Data Analysis</span>
+                </div>
+                <span class="text-yellow-400 font-pixel text-xl">88%</span>
+              </div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-[88%] bg-gradient-to-r from-emerald-400 to-purple-500"></div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- enchantment table -->
+  <div class="w-full bg-bb" id="skills">
+
+    <section class="relative w-full overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('bgskill.gif');">
+      </div>
+
+      <!-- STRONG LEFT → RIGHT FADE -->
+      <div class="absolute inset-0 
+                    bg-gradient-to-l 
+                    from-slate-900 
+                    via-slate-900/95 
+                    via-slate-900/85 
+                    via-slate-900/70 
+                    to-transparent">
+      </div>
+
+      <!-- Global Dark Tint -->
+      <div class="absolute inset-0 bg-slate-900/60"></div>
+
+      <div class="relative z-10 w-full flex-col p-6">
+        <h1 class="text-teal-400 font-bold text-6xl text-center p-6 pb-4 font-pixel">Enchantment Table</h1>
+        <h2 class="text-white text-center font-bold text-lg mb-6">Powerful skills enchanted through continuous learning
+          and real-world application</h2>
+
+        <div class="w-full flex justify-center px-4 py-10">
+          <div class="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Machine Learning -->
+            <div class="pb-1 bg-slate-600 border-2 border-slate-500 rounded-md contact-card">
+              <div class="border-b-2 border-slate-500 rounded-md bg-slate-900 p-6 h-full relative hover:border-gg">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+                    <!-- Brain Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 3a3 3 0 00-3 3v12a3 3 0 003 3m6-18a3 3 0 013 3v12a3 3 0 01-3 3M9 3h6" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white">Machine Learning / Deep Learning</h3>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">TensorFlow</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">PyTorch</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Keras</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">CNNs</span>
+                  <span
+                    class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Autoencoders</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Image
+                    Segmentation</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Object
+                    Detection</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Transfer
+                    Learning</span>
+                </div>
+
+                <div class="h-16 w-16 bg-cover bg-center absolute -right-5 -bottom-5"
+                  style="background-image: url('ml.gif');"></div>
+              </div>
+            </div>
+
+            <!-- Backend -->
+
+            <div class="pb-1 bg-slate-600 border-2 border-slate-500 rounded-md contact-card">
+              <div class="border-b-2 border-slate-500 rounded-md bg-slate-900 p-6 h-full relative hover:border-gg">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="p-2 rounded-lg bg-purple-500/10 text-purple-400">
+                    <!-- Server Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white">Backend Development</h3>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Flask</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">FastAPI</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">REST APIs</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">API Design</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Model
+                    Deployment</span>
+                </div>
+                <div class="h-28 w-28 bg-cover bg-center absolute -right-5 -bottom-5"
+                  style="background-image: url('backend.gif');"></div>
+              </div>
+            </div>
+
+            <!-- Programming -->
+            <div class="pb-1 bg-slate-600 border-2 border-slate-500 rounded-md contact-card">
+              <div class="border-b-2 border-slate-500 rounded-md bg-slate-900 p-6 h-full relative hover:border-gg">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+                    <!-- Code Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white">Programming & Tools</h3>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Python</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">C++</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Linux</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Git /
+                    GitHub</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">OpenCV</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">NumPy</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Pandas</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Matplotlib</span>
+                </div>
+                <div class="h-24 w-24 bg-cover bg-center absolute -right-5 -bottom-7"
+                  style="background-image: url('programming.gif');"></div>
+              </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="pb-1 bg-slate-600 border-2 border-slate-500 rounded-md contact-card">
+              <div class="border-b-2 border-slate-500 rounded-md bg-slate-900 p-6 h-full relative hover:border-gg">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="p-2 rounded-lg bg-pink-500/10 text-pink-400">
+                    <!-- Database Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <ellipse cx="12" cy="5" rx="9" ry="3" />
+                      <path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white">Databases</h3>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">MySQL</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">PostgreSQL</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">SQLite</span>
+                </div>
+                <div class="h-20 w-20 bg-cover bg-center absolute -right-5 -bottom-5"
+                  style="background-image: url('source.gif');"></div>
+              </div>
+            </div>
+            <!-- Core CS -->
+            <div class="pb-1 bg-slate-600 border-2 border-slate-500 rounded-md contact-card">
+              <div class="border-b-2 border-slate-500 rounded-md bg-slate-900 p-6 h-full relative hover:border-gg">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+                    <!-- Chip Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <rect x="4" y="4" width="16" height="16" rx="2" />
+                      <path d="M9 9h6v6H9z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white">Core CS Fundamentals</h3>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">DSA</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">OOP</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Computer
+                    Networks</span>
+                  <span class="bg-slate-700 text-amber-300 px-3 py-1 rounded-full text-xs font-medium">Operating
+                    Systems</span>
+                </div>
+                <div class="h-28 w-28 bg-cover bg-center absolute -right-5 -bottom-8"
+                  style="background-image: url('ai.gif');"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <!-- timeline -->
+  <div class="w-full bg-bb" id="experience">
+
+    <section class="relative w-full py-16 bg-bb overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('redstone.gif');">
+      </div>
+
+      <!-- STRONG LEFT → RIGHT FADE -->
+      <div class="absolute inset-0 
+                    bg-gradient-to-r 
+                    from-slate-900 
+                    via-slate-900/95 
+                    via-slate-900/85 
+                    via-slate-900/70 
+                    to-transparent">
+      </div>
+
+      <!-- Global Dark Tint -->
+      <div class="absolute inset-0 bg-slate-900/60"></div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-6">
+
+        <!-- Section Heading -->
+        <div>
+          <h1 class="text-teal-400 font-bold text-6xl text-center pb-4 font-pixel">Redstone Timeline</h1>
+          <h2 class="text-white text-center font-bold text-lg mb-6">Professional journey powered by innovation and
+            continuous growth</h2>
+
+        </div>
+        <!-- Timeline -->
+        <div class="relative">
+
+          <!-- Vertical line -->
+          <div class="absolute left-3 top-0 bottom-0 w-px bg-slate-700"></div>
+
+          <!-- ================= ITEM 1 ================= -->
+          <div class="relative pl-12 pb-16">
+
+            <!-- Dot -->
+            <div class="absolute left-[4px] top-2 w-4 h-4 rounded-full flex bg-emerald-400 items-center justify-center">
+              <div class="w-2 h-2 bg-slate-900 rounded-full"></div>
+            </div>
+
+            <!-- Card -->
+            <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-6 backdrop-blur-lg contact-card">
+
+              <!-- Header -->
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="px-3 py-1 text-xs rounded-full bg-emerald-500/10 text-emerald-400 font-medium">
+                  IIT Mandi
+                </span>
+
+                <span class="flex items-center gap-2 text-amber-200 text-sm">
+                  <!-- calendar icon -->
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18" />
+                  </svg>
+                  June 2025 – July 2025
+                </span>
+              </div>
+
+              <!-- Role -->
+              <h3 class="text-xl font-semibold text-white">
+                Research Intern
+              </h3>
+
+              <!-- Location -->
+              <p class="flex items-center gap-2 text-amber-200 text-sm mt-1">
+                <!-- location icon -->
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M12 21s6-5.3 6-10a6 6 0 10-12 0c0 4.7 6 10 6 10z" />
+                  <circle cx="12" cy="11" r="2.5" />
+                </svg>
+                Himachal Pradesh, India
+              </p>
+
+              <!-- Description -->
+              <p class="mt-4 text-amber-200 leading-relaxed">
+                Conducting cutting-edge research in Machine Learning, developing advanced
+                models for real-world applications, and collaborating with professors on AI projects.
+              </p>
+
+              <!-- Bullet points -->
+              <ul class="mt-4 space-y-2 text-slate-300 text-sm">
+                <li class="flex gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  VLMaps Research: Contributed to research on VLMaps — a unified embedding space for Visual-Language
+                  Navigation (VLN), enhancing cross-modal understanding and improving navigation success rates by 18% in
+                  simulated environments.
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  Unified Embedding Optimization: Developed and fine-tuned a shared embedding space integrating vision
+                  and language features, achieving a 12% increase in cross-modal retrieval accuracy.
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  VLN Pipeline Enhancement: Integrated VLMaps into existing VLN frameworks, reducing navigation planning
+                  latency by 22% and improving generalization to unseen environments by 15%
+                </li>
+              </ul>
+
+            </div>
+          </div>
+
+          <!-- ================= ITEM 2 ================= -->
+          <div class="relative pl-12 pb-16">
+
+            <!-- Dot -->
+            <div class="absolute left-[4px] top-2 w-4 h-4 rounded-full flex bg-emerald-400 items-center justify-center">
+              <div class="w-2 h-2 bg-slate-900 rounded-full"></div>
+            </div>
+
+            <!-- Card -->
+            <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-6 backdrop-blur-lg contact-card">
+
+              <!-- Header -->
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-400 font-medium">
+                  Ingenx Technology
+                </span>
+
+                <span class="flex items-center gap-2 text-amber-200 text-sm">
+                  <!-- calendar icon -->
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18" />
+                  </svg>
+                  June 2024 – August 2024
+                </span>
+              </div>
+
+              <!-- Role -->
+              <h3 class="text-xl font-semibold text-white">
+                ML Intern
+              </h3>
+
+              <!-- Location -->
+              <p class="flex items-center gap-2 text-amber-200 text-sm mt-1">
+                <!-- location icon -->
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M12 21s6-5.3 6-10a6 6 0 10-12 0c0 4.7 6 10 6 10z" />
+                  <circle cx="12" cy="11" r="2.5" />
+                </svg>
+                Haryana, India
+              </p>
+
+              <!-- Description -->
+              <p class="mt-4 text-amber-200 leading-relaxed">
+                Built production-ready machine learning pipelines and implemented
+                computer vision solutions for enterprise-level clients.
+              </p>
+
+              <!-- Bullet points -->
+              <ul class="mt-4 space-y-2 text-slate-300 text-sm">
+                <li class="flex gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  AutoML Application: Designed and implemented an AutoML regression application to automate model
+                  selection and hyperparameter tuning, improving prediction accuracy by 15% and user engagement by 30%.
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  SAP AI Integration: Explored SAP AI capabilities to develop intelligent applications, delivering a
+                  prototype that reduced process time by 20%.
+                </li>
+                <li class="flex gap-2">
+                  <span class="text-emerald-400">▸</span>
+                  Chatbot Development with OpenAI: Developed a chatbot using OpenAI and Chainlit models, increasing user
+                  satisfaction by 25% and reducing response time by 50%.
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <!-- ITEM 3 -->
+          <div class="relative pl-12 pb-16">
+
+            <!-- Dot -->
+            <div class="absolute left-[4px] top-2 w-4 h-4 rounded-full flex bg-emerald-400 items-center justify-center">
+              <div class="w-2 h-2 bg-slate-900 rounded-full"></div>
+            </div>
+
+            <!-- Card -->
+            <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-6 backdrop-blur-lg contact-card">
+
+              <!-- Header -->
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="px-3 py-1 text-xs rounded-full bg-emerald-500/10 text-emerald-400 font-medium">
+                  JNGEC Sundernagar
+                </span>
+
+                <span class="flex items-center gap-2 text-amber-200 text-sm">
+                  <!-- calendar icon -->
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18" />
+                  </svg>
+                  Jan 2023 – Sept 2025
+                </span>
+              </div>
+
+              <!-- Role -->
+              <h3 class="text-xl font-semibold text-white">
+                Coding Club Vice President
+              </h3>
+
+              <!-- Location -->
+              <p class="flex items-center gap-2 text-amber-200 text-sm mt-1">
+                <!-- location icon -->
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M12 21s6-5.3 6-10a6 6 0 10-12 0c0 4.7 6 10 6 10z" />
+                  <circle cx="12" cy="11" r="2.5" />
+                </svg>
+                Himachal Pradesh, India
+              </p>
+
+              <!-- Description -->
+              <p class="mt-4 text-amber-200 leading-relaxed">
+                Led a team to organize coding events, hackathons and coding challenges, impacting hundreds of students
+                and fostering a culture of competitive programming and innovation
+              </p>
+
+              <!-- Bullet points -->
+
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- projects -->
+  <div class="w-full flex-col bg-bb" id="projects">
+
+    <section class="relative w-full overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('bgproject.gif');">
+      </div>
+
+      <!-- STRONG LEFT → RIGHT FADE -->
+      <div class="absolute inset-0 
+                    bg-gradient-to-l 
+                    from-slate-900 
+                    via-slate-900/95 
+                    via-slate-900/85 
+                    via-slate-900/70 
+                    to-transparent">
+      </div>
+
+      <!-- Global Dark Tint -->
+      <div class="absolute inset-0 bg-slate-900/60"></div>
+      <div class="relative z-10 w-full flex-col p-6">
+        <h1 class="text-teal-400 font-bold text-6xl text-center p-6 pb-4 font-pixel">Treasure Chest</h1>
+        <h2 class="text-white text-center font-bold text-lg mb-6">Innovative projects combining AI, computer vision, and
+          real-world impact</h2>
+        <div class="w-full flex justify-center">
+          <div class="max-w-[1160px] w-full flex flex-col gap-6 justify-center">
+
+            <!-- project 1 -->
+            <div class="w-full border-2 border-slate-500 rounded-md bg-slate-700 pb-1 contact-card">
+              <div
+                class="group w-full bg-slate-900 h-full border-b-2 border-slate-500 rounded-md flex flex-col overflow-hidden hover:border-gg">
+
+
+                <!-- upper content -->
+                <div class="w-full flex relative overflow-hidden">
+                  <div class="h-full w-80 bg-cover bg-center rounded-br-md"
+                    style="background-image: url('smartcap.gif');"></div>
+
+                  <div class="p-4 pr-8 text-white flex flex-col justify-between w-full">
+                    <p class="text-md uppercase text-slate-400 tracking-wide">
+                      Major Project
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mt-1 ">
+                      Smart Cap
+                    </h2>
+
+                    <p class="text-slate-300 text-md mt-2">
+                      Major Project · For the Visually Impaired
+                    </p>
+
+                    <p class="text-amber-200 text-sm mt-2">
+                      Wearable Smart Cap on Raspberry Pi 4 providing 180° environmental awareness,
+                      OCR→TTS reading, LLM-based scene descriptions, LiDAR-assisted depth estimation,
+                      face recognition, SOS with live location, and a voice assistant.
+                    </p>
+                  </div>
+                  <!-- Arrow Toggle Button -->
+                  <button class="ml-auto absolute top-4 right-4 text-slate-400 hover:text-teal-400 transition"
+                    aria-label="Toggle details">
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                      stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                </div>
+
+
+
+                <!-- lower Content (Accordion Panel) -->
+                <div class="accordion-content overflow-hidden
+                      max-h-0 opacity-0
+                      group-hover:max-h-[1000px]
+                      group-hover:opacity-100
+                      transition-all duration-500 ease-in-out
+                      [transition-delay:0ms]
+                      group-hover:[transition-delay:120ms]">
+
+
+                  <div class=" text-white flex flex-col px-4 py-4 w-full">
+                    <div class="w-full h-[1px] bg-slate-600 mt-2 mb-3"></div>
+                    <div>
+                      <!-- 🔑 Key Features -->
+                      <p class="text-md mt-4 font-semibold">Key Features</p>
+
+                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mt-2">
+
+                        <!-- Left side (first 3) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1">
+                          <li>180° multi-camera vision for real-time environmental awareness</li>
+                          <li>OCR → TTS for reading printed text aloud</li>
+                          <li>LLM-powered scene understanding & contextual assistance</li>
+                        </ul>
+
+                        <!-- Right side (remaining) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1 mt-1 lg:mt-0">
+                          <li>LiDAR-based depth estimation for safer navigation</li>
+                          <li>Face recognition for caregiver identification & SOS alerts</li>
+                          <li>Optimized low-power pipelines for Raspberry Pi</li>
+                        </ul>
+
+                      </div>
+
+
+                      <!-- 🏷️ Tech Stack -->
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Python</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Raspberry
+                          Pi</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">OpenCV</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">OCR</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">TTS/STT</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">LiDAR</span>
+                      </div>
+
+                      <!-- 🌟 Highlights -->
+                      <p class="mt-6 font-semibold text-md">Highlights</p>
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Filled for
+                          Patent</span>
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">1st SLSH
+                          Hackthon</span>
+
+                      </div>
+                    </div>
+
+                    <!-- 🔗 GitHub Button -->
+                    <div class="mt-4">
+                      <a href="https://github.com/your-username/your-repo" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
+                            border border-slate-500 rounded-md text-slate-300
+                            hover:border-teal-400 hover:text-teal-400 transition">
+                        <!-- GitHub Icon -->
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path
+                            d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.1-.75.41-1.26.75-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19.92-.26 1.9-.38 2.88-.38.98 0 1.96.13 2.88.38 2.2-1.5 3.18-1.19 3.18-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.26 5.69.42.36.8 1.08.8 2.18v3.23c0 .3.21.65.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <!-- project 2 -->
+            <div class="w-full border-2 border-slate-500 rounded-md bg-slate-700 pb-1 contact-card">
+              <div
+                class="group w-full bg-slate-900 h-full border-b-2 border-slate-500 rounded-md flex flex-col overflow-hidden hover:border-gg">
+
+                <!-- upper content -->
+                <div class="w-full flex relative overflow-hidden">
+                  <div class="h-full w-80 bg-cover bg-center rounded-br-md" style="background-image: url('qwach.gif');">
+                  </div>
+
+                  <div class="p-4 pr-8 text-white flex flex-col justify-between w-full">
+                    <p class="text-md uppercase text-slate-400 tracking-wide">
+                      Minor Project
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mt-1 ">
+                      QWACH – Detecting Malicious QR Codes & URLs using AI
+                    </h2>
+
+                    <p class="text-slate-300 text-md mt-2">
+                      Minor Project · Hybrid ML Security Tool
+                    </p>
+
+                    <p class="text-amber-200 text-sm mt-2">
+                      Ensemble-based ML system to classify QR codes and URLs as malicious or legitimate, integrated as a
+                      Manifest V3 Chrome extension with Flask backend for real-time threat scanning.
+                    </p>
+                  </div>
+                  <!-- Arrow Toggle Button -->
+                  <button class="ml-auto absolute top-4 right-4 text-slate-400 hover:text-teal-400 transition"
+                    aria-label="Toggle details">
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                      stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                </div>
+
+
+
+                <!-- lower Content (Accordion Panel) -->
+                <div class="accordion-content overflow-hidden
+                      max-h-0 opacity-0
+                      group-hover:max-h-[1000px]
+                      group-hover:opacity-100
+                      transition-all duration-500 ease-in-out
+                      [transition-delay:0ms]
+                      group-hover:[transition-delay:120ms]">
+
+
+                  <div class=" text-white flex flex-col px-4 py-4 w-full">
+                    <div class="w-full h-[1px] bg-slate-600 mt-2 mb-3"></div>
+                    <div>
+                      <!-- 🔑 Key Features -->
+                      <p class="text-md mt-4 font-semibold">Key Features</p>
+
+                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mt-2">
+
+                        <!-- Left side (first 3) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1">
+                          <li>Hybrid ensemble model with MLP meta-classifier</li>
+                          <li>Real-time scanning via Manifest V3 Chrome extension</li>
+                          <li>Flask backend API for QR/URL analysis</li>
+                        </ul>
+
+                        <!-- Right side (remaining) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1 mt-1 lg:mt-0">
+                          <li>Periodic online retraining with newly collected threat data</li>
+                          <li>Instant malicious URL alerts with detailed risk metadata</li>
+                        </ul>
+
+                      </div>
+
+
+                      <!-- 🏷️ Tech Stack -->
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Python</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Flask</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Machine
+                          Learning
+                        </span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Ensemble
+                          Models</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Chrome
+                          Extension</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">JavaScript</span>
+                      </div>
+
+                      <!-- 🌟 Highlights -->
+                      <p class="mt-6 font-semibold text-md">Highlights</p>
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">1 research paper
+                          based on this project</span>
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Supports
+                          incremental learning</span>
+                      </div>
+                    </div>
+
+                    <!-- 🔗 GitHub Button -->
+                    <div class="mt-4">
+                      <a href="https://github.com/23f2002473/Qwach_project" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
+                            border border-slate-500 rounded-md text-slate-300
+                            hover:border-teal-400 hover:text-teal-400 transition">
+                        <!-- GitHub Icon -->
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path
+                            d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.1-.75.41-1.26.75-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19.92-.26 1.9-.38 2.88-.38.98 0 1.96.13 2.88.38 2.2-1.5 3.18-1.19 3.18-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.26 5.69.42.36.8 1.08.8 2.18v3.23c0 .3.21.65.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <!-- project 3 -->
+            <div class="w-full border-2 border-slate-500 rounded-md bg-slate-700 pb-1 contact-card">
+              <div
+                class="group w-full bg-slate-900 h-full border-b-2 border-slate-500 rounded-md flex flex-col overflow-hidden hover:border-gg">
+
+                <!-- upper content -->
+                <div class="w-full flex relative overflow-hidden">
+                  <div class="h-full w-80 bg-cover bg-center rounded-br-md"
+                    style="background-image: url('parking.gif');"></div>
+
+                  <div class="p-4 pr-8 text-white flex flex-col justify-between w-full">
+                    <p class="text-md uppercase text-slate-400 tracking-wide">
+                      Course Project
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mt-1 ">
+                      Parking Management System
+                    </h2>
+
+                    <p class="text-slate-300 text-md mt-2">
+                      MAD1 Project · Parking lot management with separate Admin and User interfaces
+                    </p>
+
+                    <p class="text-amber-200 text-sm mt-2">
+                      A Flask-powered web application for efficient parking lot management with separate Admin and User
+                      interfaces.
+                      Easily manage parking spots, reservations, and analytics — all in one place!
+                    </p>
+                  </div>
+                  <!-- Arrow Toggle Button -->
+                  <button class="ml-auto absolute top-4 right-4 text-slate-400 hover:text-teal-400 transition"
+                    aria-label="Toggle details">
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                      stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                </div>
+
+
+
+                <!-- lower Content (Accordion Panel) -->
+                <div class="accordion-content overflow-hidden
+                      max-h-0 opacity-0
+                      group-hover:max-h-[1000px]
+                      group-hover:opacity-100
+                      transition-all duration-500 ease-in-out
+                      [transition-delay:0ms]
+                      group-hover:[transition-delay:120ms]">
+
+
+                  <div class=" text-white flex flex-col px-4 py-4 w-full">
+                    <div class="w-full h-[1px] bg-slate-600 mt-2 mb-3"></div>
+                    <div>
+                      <!-- 🔑 Key Features -->
+                      <p class="text-md mt-4 font-semibold">Key Features</p>
+
+                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mt-2">
+
+                        <!-- Left side (first 3) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1">
+                          <li>Unified Dashboard – Real-time overview of parking availability, occupancy, revenue, and
+                            system statistics.</li>
+                          <li>Parking Lot & Spot Management – Create, update, delete parking lots with automatic spot
+                            generation and tracking.</li>
+                          <li>Smart Spot Reservation System – Search, book, release parking spots with vehicle number
+                            tracking and auto billing.</li>
+                        </ul>
+
+                        <!-- Right side (remaining) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1 mt-1 lg:mt-0">
+                          <li>User & Profile Management – Manage users, view active reservations, and securely update
+                            personal information.</li>
+                          <li>Parking Records & History – Track parking history, edit records, calculate charges, and
+                            review past usage.</li>
+                          <li>Analytics, Search & Reports – Powerful search across users/lots/spots with revenue
+                            analytics and summary insights.</li>
+                        </ul>
+
+                      </div>
+
+
+                      <!-- 🏷️ Tech Stack -->
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Flask</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">SQLAlchemy</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">SQLite</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Werzeug</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Html</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Css</span>
+                      </div>
+
+                      <!-- 🌟 Highlights -->
+                      <p class="mt-6 font-semibold text-md">Highlights</p>
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Real-Time Parking
+                          Availability</span>
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Admin Control
+                          Pane</span>
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Analytics &
+                          Reports</span>
+                      </div>
+                    </div>
+
+                    <!-- 🔗 GitHub Button -->
+                    <div class="mt-4">
+                      <a href="https://github.com/23f2002473/VP-MAD-1" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
+                            border border-slate-500 rounded-md text-slate-300
+                            hover:border-teal-400 hover:text-teal-400 transition">
+                        <!-- GitHub Icon -->
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path
+                            d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.1-.75.41-1.26.75-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19.92-.26 1.9-.38 2.88-.38.98 0 1.96.13 2.88.38 2.2-1.5 3.18-1.19 3.18-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.26 5.69.42.36.8 1.08.8 2.18v3.23c0 .3.21.65.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <!-- project 4 -->
+            <div class="w-full border-2 border-slate-500 rounded-md bg-slate-700 pb-1 contact-card">
+              <div
+                class="group w-full bg-slate-900 h-full border-b-2 border-slate-500 rounded-md flex flex-col overflow-hidden hover:border-gg">
+
+                <!-- upper content -->
+                <div class="w-full flex relative overflow-hidden">
+                  <div class="h-full w-80 bg-cover bg-center rounded-br-md" style="background-image: url('plant.gif');">
+                  </div>
+
+                  <div class="p-4 pr-8 text-white flex flex-col justify-between w-full">
+                    <p class="text-md uppercase text-slate-400 tracking-wide">
+                      Personal Project
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mt-1 ">
+                      Plant Disease Recognition
+                    </h2>
+
+                    <p class="text-slate-300 text-md mt-2">
+                      Personal Project · For the detecting Plant Diseases
+                    </p>
+
+                    <p class="text-amber-200 text-sm mt-2">
+                      Plant Disease Recognition System with AI-Powered Plant Doctor Assistant. Built a plant disease
+                      classifier achieving 91 to 94% accuracy across 38 classes. Integrated a chatbot assistant used by
+                      users for real-time diagnosis and treatment suggestions.
+                    </p>
+                  </div>
+                  <!-- Arrow Toggle Button -->
+                  <button class="ml-auto absolute top-4 right-4 text-slate-400 hover:text-teal-400 transition"
+                    aria-label="Toggle details">
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                      stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                </div>
+
+
+
+                <!-- lower Content (Accordion Panel) -->
+                <div class="accordion-content overflow-hidden
+                      max-h-0 opacity-0
+                      group-hover:max-h-[1000px]
+                      group-hover:opacity-100
+                      transition-all duration-500 ease-in-out
+                      [transition-delay:0ms]
+                      group-hover:[transition-delay:120ms]">
+
+
+                  <div class=" text-white flex flex-col px-4 py-4 w-full">
+                    <div class="w-full h-[1px] bg-slate-600 mt-2 mb-3"></div>
+                    <div>
+                      <!-- 🔑 Key Features -->
+                      <p class="text-md mt-4 font-semibold">Key Features</p>
+
+                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mt-2">
+
+                        <!-- Left side (first 3) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1">
+                          <li>Image-Based Disease Detection – Upload a plant image to automatically identify diseases
+                            using deep learning models.</li>
+                          <li>Instant AI Analysis – Fast and accurate image processing to detect disease symptoms in
+                            real time.</li>
+                          <li>Disease Diagnosis Results – Clear identification of the detected plant disease with
+                            confidence insights.</li>
+                        </ul>
+
+                        <!-- Right side (remaining) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1 mt-1 lg:mt-0">
+                          <li>Treatment Recommendations – Actionable guidance on remedies, prevention, and best farming
+                            practices.</li>
+                          <li>AI Plant Doctor Assistant – Interactive AI assistant to answer questions and provide
+                            expert-level advice.</li>
+                          <li>Sustainable Farming Support – Enables early detection, healthier crops, improved yield,
+                            and reduced losses.</li>
+                        </ul>
+
+                      </div>
+
+
+                      <!-- 🏷️ Tech Stack -->
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Python</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Tensorflow</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">CNN</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">OpenCV</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Streamlit</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Langchain</span>
+                      </div>
+
+                      <!-- 🌟 Highlights -->
+                      <p class="mt-6 font-semibold text-md">Highlights</p>
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Real-time</span>
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Ai plant
+                          Doctor</span>
+
+                      </div>
+                    </div>
+
+                    <!-- 🔗 GitHub Button -->
+                    <div class="mt-4">
+                      <a href="https://github.com/23f2002473/-Plant-Disease-Recognition-System-with-AI-Powered-Plant-Doctor-Assistant-"
+                        target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
+                            border border-slate-500 rounded-md text-slate-300
+                            hover:border-teal-400 hover:text-teal-400 transition">
+                        <!-- GitHub Icon -->
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path
+                            d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.1-.75.41-1.26.75-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19.92-.26 1.9-.38 2.88-.38.98 0 1.96.13 2.88.38 2.2-1.5 3.18-1.19 3.18-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.26 5.69.42.36.8 1.08.8 2.18v3.23c0 .3.21.65.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <!-- project 5 -->
+            <div class="w-full border-2 border-slate-500 rounded-md bg-slate-700 pb-1 contact-card">
+              <div
+                class="group w-full bg-slate-900 h-full border-b-2 border-slate-500 rounded-md flex flex-col overflow-hidden hover:border-gg">
+
+                <!-- upper content -->
+                <div class="w-full flex relative overflow-hidden">
+                  <div class="h-full w-80 bg-cover bg-center rounded-br-md"
+                    style="background-image: url('Emotion_1.gif');"></div>
+
+                  <div class="p-4 pr-8 text-white flex flex-col justify-between w-full">
+                    <p class="text-md uppercase text-slate-400 tracking-wide">
+                      Personal Project
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mt-1 ">
+                      Tweet Sentiment Analysis
+                    </h2>
+
+                    <p class="text-slate-300 text-md mt-2">
+                      Personal Project · Sentiment classification of tweets into positive, negative, or neutral
+                    </p>
+
+                    <p class="text-amber-200 text-sm mt-2">
+                      This project performs sentiment classification of tweets into positive, negative, or neutral using
+                      both traditional Machine Learning techniques and BERT, a transformer-based model known for its
+                      superior NLP performance.
+                    </p>
+                  </div>
+                  <!-- Arrow Toggle Button -->
+                  <button class="ml-auto absolute top-4 right-4 text-slate-400 hover:text-teal-400 transition"
+                    aria-label="Toggle details">
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                      stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                </div>
+
+
+
+                <!-- lower Content (Accordion Panel) -->
+                <div class="accordion-content overflow-hidden
+                      max-h-0 opacity-0
+                      group-hover:max-h-[1000px]
+                      group-hover:opacity-100
+                      transition-all duration-500 ease-in-out
+                      [transition-delay:0ms]
+                      group-hover:[transition-delay:120ms]">
+
+
+                  <div class=" text-white flex flex-col px-4 py-4 w-full">
+                    <div class="w-full h-[1px] bg-slate-600 mt-2 mb-3"></div>
+                    <div>
+                      <!-- 🔑 Key Features -->
+                      <p class="text-md mt-4 font-semibold">Key Features</p>
+
+                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mt-2">
+
+                        <!-- Left side (first 3) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1">
+                          <li>Text Preprocessing: Cleaning, stopword removal, stemming, tokenization.</li>
+                          <li>Feature Extraction: CountVectorizer, TF-IDF, and BERT embeddings</li>
+                          <li>Evaluation Metrics: Accuracy, Confusion Matrix, F1-Score, Precision, Recall</li>
+                        </ul>
+
+                        <!-- Right side (remaining) -->
+                        <!-- <ul class="list-disc list-inside text-amber-200 text-sm space-y-1 mt-1 lg:mt-0">
+                        <li>LiDAR-based depth estimation for safer navigation</li>
+                        <li>Face recognition for caregiver identification & SOS alerts</li>
+                        <li>Optimized low-power pipelines for Raspberry Pi</li>
+                      </ul> -->
+
+                      </div>
+
+
+                      <!-- 🏷️ Tech Stack -->
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Python</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Pandas</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Sklearn</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">BERT</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">CountVectorizer</span>
+
+                      </div>
+
+                      <!-- 🌟 Highlights -->
+                      <p class="mt-6 font-semibold text-md">Highlights</p>
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">End-to-End NLP
+                          Pipeline</span>
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Multi-Model
+                          Comparison</span>
+
+                      </div>
+                    </div>
+
+                    <!-- 🔗 GitHub Button -->
+                    <div class="mt-4">
+                      <a href="https://github.com/23f2002473/sentiment" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
+                            border border-slate-500 rounded-md text-slate-300
+                            hover:border-teal-400 hover:text-teal-400 transition">
+                        <!-- GitHub Icon -->
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path
+                            d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.1-.75.41-1.26.75-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19.92-.26 1.9-.38 2.88-.38.98 0 1.96.13 2.88.38 2.2-1.5 3.18-1.19 3.18-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.26 5.69.42.36.8 1.08.8 2.18v3.23c0 .3.21.65.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <!-- project 6 -->
+            <div class="w-full border-2 border-slate-500 rounded-md bg-slate-700 pb-1 contact-card">
+              <div
+                class="group w-full bg-slate-900 h-full border-b-2 border-slate-500 rounded-md flex flex-col overflow-hidden hover:border-gg">
+
+                <!-- upper content -->
+                <div class="w-full flex relative overflow-hidden">
+                  <div class="h-full w-80 bg-cover bg-center rounded-br-md" style="background-image: url('hand.gif');">
+                  </div>
+
+                  <div class="p-4 pr-8 text-white flex flex-col justify-between w-full">
+                    <p class="text-md uppercase text-slate-400 tracking-wide">
+                      Personal Project
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mt-1 ">
+                      Hand Action Recognition
+                    </h2>
+
+                    <p class="text-slate-300 text-md mt-2">
+                      Personal Project · Sign Language Recognition
+                    </p>
+
+                    <p class="text-amber-200 text-sm mt-2">
+                      This project focuses on the development of a real-time hand gesture recognition system to support
+                      accessibility tools. The model utilizes Long Short-Term Memory (LSTM) networks to recognize hand
+                      gestures, achieving an accuracy of 93% on 5 custom hand gestures. This system can be integrated
+                      into applications to provide real-time sign language recognition, enabling improved accessibility
+                      for individuals with hearing impairments.
+                    </p>
+                  </div>
+                  <!-- Arrow Toggle Button -->
+                  <button class="ml-auto absolute top-4 right-4 text-slate-400 hover:text-teal-400 transition"
+                    aria-label="Toggle details">
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                      stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                </div>
+
+
+
+                <!-- lower Content (Accordion Panel) -->
+                <div class="accordion-content overflow-hidden
+                      max-h-0 opacity-0
+                      group-hover:max-h-[1000px]
+                      group-hover:opacity-100
+                      transition-all duration-500 ease-in-out
+                      [transition-delay:0ms]
+                      group-hover:[transition-delay:120ms]">
+
+
+                  <div class=" text-white flex flex-col px-4 py-4 w-full">
+                    <div class="w-full h-[1px] bg-slate-600 mt-2 mb-3"></div>
+                    <div>
+                      <!-- 🔑 Key Features -->
+                      <p class="text-md mt-4 font-semibold">Key Features</p>
+
+                      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mt-2">
+
+                        <!-- Left side (first 3) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1">
+                          <li>Gesture Recognition: Recognizes 4 custom hand gestures in real time.</li>
+                          <li>High Accuracy: Achieved 93% accuracy on the recognition of hand gestures.</li>
+                          <li>Real-time Processing: The system is optimized for real-time gesture recognition with
+                            sub-second response times.</li>
+                        </ul>
+
+                        <!-- Right side (remaining) -->
+                        <ul class="list-disc list-inside text-amber-200 text-sm space-y-1 mt-1 lg:mt-0">
+                          <li>Accessibility Tool: Can be integrated into applications to assist people with hearing
+                            impairments by recognizing sign language gestures.</li>
+                        </ul>
+
+                      </div>
+
+
+                      <!-- 🏷️ Tech Stack -->
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Python</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Tensorflow</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">OpenCV</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Mediapipe</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">Keras</span>
+                        <span
+                          class="bg-slate-800 border border-teal-400 text-teal-400 px-2 py-1 rounded-full font-medium">LSTM</span>
+                      </div>
+
+                      <!-- 🌟 Highlights -->
+                      <p class="mt-6 font-semibold text-md">Highlights</p>
+                      <div class="flex flex-wrap gap-2 mt-4 text-sm">
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Multi-Class Action
+                          Classification</span>
+                        <span class="bg-slate-700 text-amber-300 px-2 py-1 rounded-full font-medium">Robust Feature
+                          Extraction</span>
+
+                      </div>
+                    </div>
+
+                    <!-- 🔗 GitHub Button -->
+                    <div class="mt-4">
+                      <a href="https://github.com/23f2002473/hand-action-recognition" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
+                            border border-slate-500 rounded-md text-slate-300
+                            hover:border-teal-400 hover:text-teal-400 transition">
+                        <!-- GitHub Icon -->
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path
+                            d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.1-.75.41-1.26.75-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19.92-.26 1.9-.38 2.88-.38.98 0 1.96.13 2.88.38 2.2-1.5 3.18-1.19 3.18-1.19.63 1.6.23 2.78.11 3.07.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.26 5.69.42.36.8 1.08.8 2.18v3.23c0 .3.21.65.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+                        </svg>
+                        View on GitHub
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- reseach and achievement -->
+  <div class="w-full bg-bb" id="awards">
+    <section class="relative w-full py-24 overflow-hidden">
+
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('bgresearch.gif');"></div>
+
+      <!-- STRONG LEFT → RIGHT FADE -->
+      <div class="absolute inset-0 bg-gradient-to-r
+                    from-black via-slate-900/95 via-slate-900/85 via-slate-900/70 to-transparent"></div>
+
+
+      <!-- Global Dark Tint -->
+      <div class="absolute inset-0 bg-slate-900/50"></div>
+
+      <!-- CONTENT -->
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+        <!-- Section Heading -->
+        <div>
+          <h1 class="text-teal-400 font-bold text-6xl text-center pb-4 font-pixel">Work That Matters</h1>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+          <!-- LEFT: RESEARCH -->
+          <div class="lg:col-span-2 space-y-6">
+
+            <h3 class="flex items-center gap-3 text-white font-semibold mb-3 text-xl">
+              <div class="p-2 rounded-lg bg-cyan-500/40">
+                <svg class="w-7 h-7 icon-cyan" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4 19.5A2.5 2.5 0 016.5 17H20M4 4.5A2.5 2.5 0 016.5 7H20v13H6.5A2.5 2.5 0 014 17.5z" />
+                </svg>
+              </div>
+              Research Publications
+            </h3>
+
+
+            <!-- Card -->
+            <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-5 backdrop-blur-lg contact-card">
+              <div class="flex gap-3">
+                <svg class="w-5 h-5 icon-cyan mt-1" fill="none" stroke="currentColor" stroke-width="1.6"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9M12 4h9M3 8h6M3 12h6M3 16h6" />
+                </svg>
+
+                <div>
+                  <h4 class="text-white font-medium">
+                    HybridStack-MLP: Advanced Ensemble Learning for Malicious QR Code and URL Detection
+                  </h4>
+                  <p class="text-amber-200 text-sm">INCOWOCO 2025 · IEEE</p>
+                </div>
+              </div>
+
+
+
+
+
+              <!-- <div class="flex justify-between items-center mt-4">
+                  <div class="px-2 py-1 rounded-lg bg-emerald-500/20">
+                    <span class="text-emerald-400 text-xs font-semibold">Published Paper</span>
+                  </div>
+                  <button class="px-3 py-1 text-sm rounded-md bg-slate-700 text-white hover:bg-slate-600">
+                    View Paper
+                  </button>
+                </div> -->
+            </div>
+
+
+            <!-- Achievements -->
+            <h3 class="flex items-center gap-3 text-white font-semibold mb-3 text-xl">
+              <div class="p-2 bg-purple-500/40 rounded-lg">
+                <svg class="w-7 h-7 icon-purple" fill="none" stroke="currentColor" stroke-width="1.8"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4z" />
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M5 6h2v2a4 4 0 01-4-4V4h2M19 6h-2v2a4 4 0 004-4V4h-2" />
+                </svg>
+              </div>
+              Achievements
+            </h3>
+
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-4 backdrop-blur-lg contact-card">
+                <h4 class="text-white font-semibold">1st State Level Hackthon Himachal Pradesh</h4>
+                <p class="text-amber-200 text-sm mt-1">Machine Learning & AI</p>
+              </div>
+
+              <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-4 backdrop-blur-lg contact-card">
+                <h4 class="text-white font-semibold">Project Gallery Winner</h4>
+                <p class="text-amber-200 text-sm mt-1">College Technical Fest</p>
+              </div>
+
+              <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-4 backdrop-blur-lg contact-card">
+                <h4 class="text-white font-semibold">College Hackathon Winner</h4>
+                <p class="text-amber-200 text-sm mt-1">AI-based Solution</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: CERTIFICATIONS -->
+          <!-- <div class="space-y-5">
+
+              <h3 class="flex items-center gap-3 text-white font-semibold mb-3 text-xl">
+                <div class="rounded-lg p-2 bg-emerald-500/40">
+                                  <svg class="w-7 h-7 icon-emerald" fill="none" stroke="currentColor" stroke-width="1.8"
+                  viewBox="0 0 24 24">
+                  <rect x="4" y="3" width="16" height="14" rx="2"/>
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 21l4-3 4 3M8 7h8M8 11h5"/>
+                </svg>
+                </div>
+                Certifications
+              </h3>
+
+
+              <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-4 backdrop-blur-lg flex justify-between items-center">
+                <div>
+                  <h4 class="text-white">Deep Learning</h4>
+                  <p class="text-slate-400 text-sm">NPTEL · IIT Ropar</p>
+                </div>
+                <button class="px-3 py-1 text-sm rounded-md bg-slate-700 text-white hover:bg-slate-600">
+                  View
+                </button>
+              </div>
+
+              <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-4 backdrop-blur-lg flex justify-between items-center">
+                <div>
+                  <h4 class="text-white">DGCA Remote Pilot</h4>
+                  <p class="text-slate-400 text-sm">Govt. of India</p>
+                </div>
+                <button class="px-3 py-1 text-sm rounded-md bg-slate-700 text-white hover:bg-slate-600">
+                  View
+                </button>
+              </div>
+
+              <div class="bg-slate-800/60 border border-slate-600 rounded-xl p-4 backdrop-blur-lg flex justify-between items-center">
+                <div>
+                  <h4 class="text-white">AI/ML Workshop</h4>
+                  <p class="text-slate-400 text-sm">IIT Mandi</p>
+                </div>
+                <button class="px-3 py-1 text-sm rounded-md bg-slate-700 text-white hover:bg-slate-600">
+                  View
+                </button>
+              </div>
+
+            </div> -->
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- beacon of knowledge -->
+  <div class="w-full bg-bb" id="education">
+    <section class="relative w-full py-24 overflow-hidden">
+
+      <!-- 🌌 Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('knowledge.gif');">
+      </div>
+
+      <!-- 🔥 Strong Left → Right Fade -->
+      <div class="absolute inset-0 bg-gradient-to-l
+                    from-slate-900 via-slate-900/95 via-slate-900/85 via-slate-900/70 to-transparent">
+      </div>
+
+      <!-- 🌑 Global Dark Tint -->
+      <div class="absolute inset-0 bg-slate-900/60"></div>
+
+      <!-- CONTENT -->
+      <div class="relative z-10 w-full p-6">
+
+        <!-- Heading -->
+        <h1 class="text-teal-400 font-bold text-6xl md:text-7xl text-center font-pixel">
+          Beacon of Knowledge
+        </h1>
+
+        <h2 class="text-white text-center font-bold text-lg mb-6">
+          Academic foundation in AI, ML, and Data Science from prestigious institutions
+        </h2>
+
+        <!-- Cards Wrapper -->
+        <div class="w-full flex flex-wrap justify-center">
+          <div class="max-w-[1200px] w-full flex flex-wrap gap-6 justify-center">
+
+            <!-- CARD 1 -->
+            <div
+              class="w-full lg:w-[520px] bg-slate-800/60 border border-slate-600 rounded-2xl p-6 backdrop-blur-lg contact-card">
+
+              <!-- Top Row -->
+              <div class="flex items-start gap-4">
+
+                <!-- Icon -->
+                <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400">
+                  <!-- Graduation Cap Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                    <path d="M22 10L12 4 2 10l10 6 10-6z" />
+                    <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" />
+                  </svg>
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1">
+
+                  <!-- Duration -->
+                  <div class="flex items-center gap-2 text-amber-200 text-sm mb-1">
+                    <!-- Calendar Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4M8 2v4M3 10h18" />
+                    </svg>
+                    2022 – 2026
+                  </div>
+
+                  <!-- Degree -->
+                  <h3 class="text-xl font-semibold text-white">
+                    B.Tech Computer Science (AI & ML)
+                  </h3>
+
+                  <!-- Institute -->
+                  <p class="text-emerald-400 text-sm font-medium mt-1">
+                    JNGEC, Sundernagar
+                  </p>
+
+                  <!-- Tags -->
+                  <div class="flex flex-wrap gap-2 mt-4">
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Machine Learning
+                    </span>
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Deep Learning
+                    </span>
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Computer Vision
+                    </span>
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Data Structures
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- CARD 2 -->
+            <div
+              class="w-full lg:w-[520px] bg-slate-800/60 border border-slate-600 rounded-2xl p-6 backdrop-blur-lg contact-card">
+
+              <!-- Top Row -->
+              <div class="flex items-start gap-4">
+
+                <!-- Icon -->
+                <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400">
+                  <!-- Graduation Cap Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                    <path d="M22 10L12 4 2 10l10 6 10-6z" />
+                    <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" />
+                  </svg>
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1">
+
+                  <!-- Duration -->
+                  <div class="flex items-center gap-2 text-amber-200 text-sm mb-1">
+                    <!-- Calendar Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <path d="M16 2v4M8 2v4M3 10h18" />
+                    </svg>
+                    2023 – 2027
+                  </div>
+
+                  <!-- Degree -->
+                  <h3 class="text-xl font-semibold text-white">
+                    BS Data Science & Applications
+                  </h3>
+
+                  <!-- Institute -->
+                  <p class="text-emerald-400 text-sm font-medium mt-1">
+                    IIT Madras
+                  </p>
+
+                  <!-- Tags -->
+                  <div class="flex flex-wrap gap-2 mt-4">
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Statistics
+                    </span>
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Business Analytics
+                    </span>
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Data Analysis
+                    </span>
+                    <span
+                      class="bg-slate-700 border border-teal-400 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
+                      Python Programming
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- lets work -->
+  <div class="w-full bg-bb" id="contact">
+    <section class="relative w-full pt-28 pb-6 overflow-hidden">
+
+      <!-- 🔮 Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('connect.gif');">
+      </div>
+
+      <!-- STRONG LEFT → RIGHT FADE (same style as other sections) -->
+      <div class="absolute inset-0 bg-gradient-to-r
+                    from-slate-900 via-slate-900/95 via-slate-900/85 via-slate-900/70 to-transparent"></div>
+
+      <!-- Global dark tint -->
+      <div class="absolute inset-0 bg-slate-900/60"></div>
+
+      <!-- CONTENT -->
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+
+
+        <!-- Section Heading -->
+        <div>
+          <h1 class="text-teal-400 font-bold text-6xl md:text-7xl text-center pb-4 font-pixel">For Jam Session!!!</h1>
+          <p class="text-amber-200 text-xl font-medium mb-2 text-center">
+            Get in Touch
+          </p>
+          <h2 class="text-white text-center font-bold text-lg mb-6">Interested in collaborating or have a project in
+            mind?
+            I’d love to hear from you.</h2>
+
+        </div>
+
+
+        <!-- Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+          <!-- Email -->
+          <a href="mailto:rohitshrama890@gmail.com"
+            class="contact-card bg-slate-800/60 border border-slate-600 rounded-xl p-6 backdrop-blur-lg flex items-center gap-4">
+
+            <div class="icon-wrap p-3 rounded-lg bg-emerald-500/10 text-emerald-400">
+              <!-- Mail icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+            </div>
+
+            <div>
+              <p class="text-amber-200 text-sm">Email</p>
+              <p class="text-white font-medium">
+                rohitshrama890@gmail.com
+              </p>
+            </div>
+          </a>
+
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/rohit-sharma-904972266" target="_blank"
+            class="contact-card bg-slate-800/60 border border-slate-600 rounded-xl p-6 backdrop-blur-lg flex items-center gap-4">
+
+            <div class="icon-wrap p-3 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="3" y="9" width="4" height="12" />
+                <circle cx="5" cy="5" r="2" />
+                <path
+                  d="M9 9h4v2.2c.6-1.3 2-2.2 3.8-2.2 2.9 0 5.2 2 5.2 6v6h-4v-5.5c0-2-1-3.2-2.6-3.2-1.4 0-2.2.9-2.6 1.8V21H9z" />
+              </svg>
+            </div>
+
+            <div>
+              <p class="text-amber-200 text-sm">LinkedIn</p>
+              <p class="text-white font-medium">
+                Connect with me
+              </p>
+            </div>
+          </a>
+
+
+          <!-- GitHub -->
+          <a href="https://github.com/23f2002473" target="_blank"
+            class="contact-card bg-slate-800/60 border border-slate-600 rounded-xl p-6 backdrop-blur-lg flex items-center gap-4">
+
+            <div class="icon-wrap p-3 rounded-lg bg-purple-500/10 text-purple-400">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path
+                  d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-2c-3 .6-3.6-1.3-3.6-1.3-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1 1.6-.7 1.9-1 .1-.7.4-1 .7-1.2-2.4-.3-4.9-1.2-4.9-5.3 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3 0 0 .9-.3 3 1.1a10.5 10.5 0 015.4 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.1-2.5 5-4.9 5.3.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A10 10 0 0012 2z" />
+              </svg>
+            </div>
+
+            <div>
+              <p class="text-amber-200 text-sm">GitHub</p>
+              <p class="text-white font-medium">
+                View my code
+              </p>
+            </div>
+          </a>
+
+
+          <!-- Phone -->
+          <div
+            class="contact-card bg-slate-800/60 border border-slate-600 rounded-xl p-6 backdrop-blur-lg flex items-center gap-4 cursor-default">
+
+            <div class="icon-wrap p-3 rounded-lg bg-emerald-500/10 text-emerald-400">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M3 5c0 8.8 7.2 16 16 16l2-2-4-4-2 2a12 12 0 01-6-6l2-2-4-4-2 2z" />
+              </svg>
+            </div>
+
+            <div>
+              <p class="text-amber-200 text-sm">Phone</p>
+              <p class="text-white font-medium">
+                Available on request
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Location -->
+        <p class="mt-14 text-center text-amber-200 flex justify-center items-center gap-2 text-md">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M12 21s6-5.3 6-10a6 6 0 10-12 0c0 4.7 6 10 6 10z" />
+            <circle cx="12" cy="11" r="2.5" />
+          </svg>
+          Himachal Pradesh, India
+        </p>
+
+      </div>
+    </section>
+
+
+  </div>
+  <!-- footer -->
+
+  <footer class="relative w-full overflow-hidden">
+
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-cover bg-center scale-110" style="background-image: url('footer.gif');">
+    </div>
+
+    <!-- Strong Dark + Vignette -->
+    <div class="absolute inset-0 bg-slate-900/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/80"></div>
+
+    <!-- ✨ Radial Neon Glow -->
+    <div class="absolute inset-0
+                  bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.12),transparent_60%)]">
+    </div>
+
+    <!-- Cyber Grid Overlay -->
+    <div class="absolute inset-0 opacity-[0.05] bg-[url('grid.png')]"></div>
+
+    <!--  Animated Scanline -->
+    <div class="absolute inset-0 pointer-events-none
+                  bg-[linear-gradient(to_bottom,transparent_95%,rgba(255,255,255,0.06)_96%,transparent_97%)]
+                  bg-[length:100%_6px]
+                  animate-scan">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 pb-8 text-center">
+
+      <!-- Divider -->
+      <div class="mx-auto mb-10 h-px w-2/3
+                    bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent">
+      </div>
+
+      <!-- Signature -->
+      <p class="text-slate-300 text-lg tracking-wide mb-2">
+        Designed & Built by
+        <span class="text-emerald-400 font-semibold">
+          Rohit Sharma
+        </span>
+      </p>
+
+      <!-- Cyber tagline -->
+      <p class="text-amber-200 text-sm font-mono mb-4">
+        crafting intelligence • engineering impact • building the future
+      </p>
+
+      <!-- Copyright -->
+      <p class="text-slate-400 text-sm">
+        © 2025 All rights reserved.
+      </p>
+
+      <!-- 🔮 Neon Pulse Core
+        <div class="mt-10 flex justify-center">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+          </span>
+        </div> -->
+
+      <!-- 🐲 Easter Egg -->
+      <p class="mt-1 text-xs text-slate-500 italic">
+        forged in late nights, caffeine, and curiosity
+      </p>
+
+    </div>
+  </footer>
+
+
+
+
+  <!-- chatbot -->
+
+  <!-- ========================= -->
+  <!-- AI CHATBOT (GLOBAL FLOAT) -->
+  <!-- ========================= -->
+
+  <!-- Status Badge -->
+  <!-- <div class="status-badge" id="statusBadge">
+      <div class="status-icon"></div>
+      <div>
+        <div class="status-text">Initializing...</div>
+        <div class="status-details" id="statusDetails"></div>
+      </div>
+    </div> -->
+
+  <!-- Chat Toggle Button -->
+  <!-- Chat Toggle -->
+  <button id="chatToggle" class="fixed bottom-6 right-6 z-[1000]
+            h-14 w-14 rounded-full
+            bg-gradient-to-br from-emerald-400 to-emerald-600
+            text-black text-2xl
+            flex items-center justify-center
+            shadow-lg shadow-emerald-500/30
+            hover:scale-110 transition-all duration-300
+            disabled:opacity-50 disabled:cursor-not-allowed">
+    💬
+  </button>
+
+  <!-- Chat Container -->
+  <div id="chatContainer" class="fixed bottom-24 right-6 z-[999]
+            w-[420px] max-w-[95vw] h-[600px]
+            bg-slate-900 border border-slate-700
+            rounded-2xl shadow-2xl
+            flex flex-col
+            opacity-0 translate-y-6 scale-95
+            pointer-events-none
+            transition-all duration-300 ease-out">
+    <!-- Header -->
+    <div class="px-6 py-4 border-b border-slate-700">
+      <h2 class="text-lg font-bold text-emerald-400 font-pixel">AI Assistant</h2>
+      <p class="text-xs text-slate-400">
+        Ask me anything about the resume
+      </p>
+      <span class="inline-block mt-2 px-2 py-0.5
+                text-[10px] rounded border
+                border-emerald-400 text-emerald-400">
+        RAG Powered
+      </span>
+    </div>
+
+    <!-- Messages -->
+    <div id="chatMessages" class="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+
+      <!-- Welcome -->
+      <div class="text-center space-y-3">
+        <h3 class="text-xl font-semibold text-emerald-400 font-pixel">
+          👋 Hello!
+        </h3>
+        <p class="text-sm text-slate-400">
+          I can answer questions about the resume using AI.
+        </p>
+
+        <div class="space-y-2 text-white">
+          <button onclick="askQuestion('What are the main technical skills?')" class="w-full text-left px-4 py-2 rounded-lg
+                      bg-slate-800 border border-slate-700
+                      text-sm hover:border-emerald-400 transition">
+            What are the main technical skills?
+          </button>
+
+          <button onclick="askQuestion('Summarize the work experience')" class="w-full text-left px-4 py-2 rounded-lg
+                      bg-slate-800 border border-slate-700
+                      text-sm hover:border-emerald-400 transition">
+            Summarize the work experience
+          </button>
+
+          <button onclick="askQuestion('What education background is mentioned?')" class="w-full text-left px-4 py-2 rounded-lg
+                      bg-slate-800 border border-slate-700
+                      text-sm hover:border-emerald-400 transition">
+            What education background is mentioned?
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Input -->
+    <div class="border-t border-slate-700 px-4 py-3">
+      <div class="flex gap-2">
+        <input id="chatInput" type="text" placeholder="Ask about the resume..." onkeypress="handleKeyPress(event)"
+          class="flex-1 rounded-lg bg-slate-800
+                  border border-slate-700
+                  px-4 py-2 text-sm
+                  focus:outline-none focus:border-emerald-400 text-white" />
+
+        <button id="sendButton" onclick="sendMessage()" class="px-4 py-2 rounded-lg
+                  bg-gradient-to-br from-emerald-400 to-emerald-600
+                   font-pixel text-lg font-semibold
+                  hover:scale-105 transition">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+
+</body>
+
+<script>
+  const text = "Machine Learning Engineer";
+  const speed = 80; // typing speed (ms)
+  let index = 0;
+
+  function type() {
+    if (index < text.length) {
+      document.getElementById("typing-text").textContent += text.charAt(index);
+      index++;
+      setTimeout(type, speed);
+    }
+  }
+
+  window.addEventListener("load", type);
+
+
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+  const burger = document.getElementById("burger");
+  const cross = document.getElementById("cross");
+
+  let open = false;
+
+  btn.addEventListener("click", () => {
+    open = !open;
+
+    if (open) {
+      menu.classList.remove("opacity-0", "-translate-y-4", "pointer-events-none");
+      menu.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+
+      burger.classList.add("hidden");
+      cross.classList.remove("hidden");
+      cross.classList.add("flex");
+    } else {
+      menu.classList.add("opacity-0", "-translate-y-4", "pointer-events-none");
+      menu.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+
+      burger.classList.remove("hidden");
+      cross.classList.add("hidden");
+    }
+  });
+
+
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+    });
+  });
+
+
+
+
+  // chatbot code
+
+
+  // Chatbot Client Logic
+  let conversationHistory = [];
+
+  function enableChat() {
+    const chatToggle = document.getElementById('chatToggle');
+    if (chatToggle) chatToggle.disabled = false;
+  }
+
+  const chatToggleBtn = document.getElementById('chatToggle');
+  if (chatToggleBtn) {
+    chatToggleBtn.addEventListener('click', function () {
+      const chatContainer = document.getElementById('chatContainer');
+
+      chatContainer.classList.toggle('active');
+      chatToggleBtn.classList.toggle('active');
+
+      // toggle visibility classes manually since we rely on them heavily in CSS
+      // logic copied/adapted from original toggle
+      const isOpen = !chatContainer.classList.contains('opacity-0');
+
+      if (isOpen) {
+        // Close it
+        chatContainer.classList.remove('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+        chatContainer.classList.add('opacity-0', 'translate-y-6', 'scale-95', 'pointer-events-none');
+        chatToggleBtn.textContent = '💬';
+      } else {
+        // Open it
+        chatContainer.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+        chatContainer.classList.remove('opacity-0', 'translate-y-6', 'scale-95', 'pointer-events-none');
+        chatToggleBtn.textContent = '✕';
+        const input = document.getElementById('chatInput');
+        if (input) input.focus();
+      }
+    });
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function askQuestion(question) {
+    const input = document.getElementById('chatInput');
+    if (input) {
+      input.value = question;
+      sendMessage();
+    }
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const messagesContainer = document.getElementById('chatMessages');
+    const sendButton = document.getElementById('sendButton');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    const welcomeScreen = messagesContainer.querySelector('.welcome-screen');
+    if (welcomeScreen) {
+      welcomeScreen.remove();
+    }
+
+    addMessage(message, 'user');
+    conversationHistory.push({ role: 'user', content: message });
+
+    input.value = '';
+    if (sendButton) sendButton.disabled = true;
+
+    const typingIndicator = createTypingIndicator();
+    messagesContainer.appendChild(typingIndicator);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: message })
+      });
+
+      const data = await response.json();
+
+      typingIndicator.remove();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      addMessage(data.reply, 'assistant', data.context);
+      conversationHistory.push({ role: 'assistant', content: data.reply });
+
+    } catch (error) {
+      if (typingIndicator.parentNode) typingIndicator.remove();
+      console.error('Error:', error);
+      showError(error.message || 'Failed to get response');
+    } finally {
+      if (sendButton) sendButton.disabled = false;
+      if (input) input.focus();
+    }
+  }
+
+  function addMessage(content, role, sources = null) {
+    const messagesContainer = document.getElementById('chatMessages');
+
+    const messageDiv = document.createElement('div');
+    // Simple styling classes
+    messageDiv.className = `flex gap-3 ${role === 'user' ? 'flex-row-reverse' : ''}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0';
+    avatar.textContent = role === 'user' ? '👤' : '🤖';
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = `p-3 rounded-2xl max-w-[80%] text-sm ${role === 'user'
+      ? 'bg-emerald-500 text-black rounded-tr-none'
+      : 'bg-slate-800 text-slate-200 rounded-tl-none border border-slate-700'
+      }`;
+    contentDiv.textContent = content;
+
+    if (sources && sources.length > 0 && role === 'assistant') {
+      const sourcesDiv = document.createElement('div');
+      sourcesDiv.className = 'mt-2 text-xs text-slate-500 italic pt-2 border-t border-slate-700/50';
+      contentDiv.appendChild(sourcesDiv);
+    }
+
+    messageDiv.appendChild(avatar);
+    messageDiv.appendChild(contentDiv);
+
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function createTypingIndicator() {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'flex gap-3';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0';
+    
+
+    const indicator = document.createElement('div');
+    indicator.className = 'p-3 rounded-2xl bg-slate-800 border border-slate-700 rounded-tl-none flex gap-1 items-center h-10';
+    indicator.innerHTML = `
+                <div class="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce"></div>
+                <div class="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                <div class="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+            `;
+
+    messageDiv.appendChild(avatar);
+    messageDiv.appendChild(indicator);
+
+    return messageDiv;
+  }
+
+  function showError(message) {
+    // Fallback since I can't find the exact container class in snippet
+    addMessage("System Error: " + message, 'assistant');
+  }
+
+  // Enable chat immediately
+  enableChat();
+
+
+</script>
+
+
+</html>
