@@ -4,3 +4,4 @@ openai
 python-dotenv
 PyPDF2
 numpy
+gunicorn
